@@ -1,0 +1,4 @@
+node_modules
+venv
+package-lock.json
+training_data

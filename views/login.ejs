@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+
+        <main id="login-content">
+            <section class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <h1>Log In to EduSign</h1>
+                        <h4>If you are new here. Rgeister an Account</h4>
+                        <p>Welcome back! Please enter your credentials to continue</p>
+                    </div>
+
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" id="login-tab">Log In</button>
+                        <button class="auth-tab" id="register-tab">Register</button>
+                    </div>
+
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" required>
+                            <div class="password-options">
+                                <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="form-group remember-me">
+                            <input type="checkbox" id="remember-me" name="remember">
+                            <label for="remember-me">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn primary-btn login-btn" id="login-submit-btn">Log In</button>
+                    </form>
+
+                    <form id="register-form" class="auth-form" style="display: none;">
+                        <div class="form-group">
+                            <label for="register-name">Full Name</label>
+                            <input type="text" id="register-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email Address</label>
+                            <input type="email" id="register-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <input type="password" id="register-password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" required>
+                        </div>
+                        <div class="form-group user-type">
+                            <label>I am a:</label>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <input type="radio" id="parent" name="user-type" value="parent" checked>
+                                    <label for="parent">Parent</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="educator" name="user-type" value="educator">
+                                    <label for="educator">Educator</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="other" name="user-type" value="other">
+                                    <label for="other">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group terms">
+                            <input type="checkbox" id="terms-agree" name="terms" required>
+                            <label for="terms-agree">I agree to the <a href="/terms">Terms of Service</a> and <a
+                                    href="/privacy">Privacy Policy</a></label>
+                        </div>
+                        <button type="submit" class="btn primary-btn register-btn" id="register-submit-btn">Create
+                            Account</button>
+                    </form>
+
+                    <div class="social-login">
+                        <p>Or continue with</p>
+                        <div class="social-buttons">
+                            <button class="social-btn google" id="google-login">
+                                <img src="/assets/imgs/googlelogo.png" alt="Google">
+                                <span>Google</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('./partials/footer') %>
+            <script type="module" src="js/regiser.js">
+
+ 
+            </script>
+</body>
+
+</html>

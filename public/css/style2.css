@@ -1,0 +1,276 @@
+/* body{
+   margin-top : 83px;
+}
+
+.section-1 :hover  {
+    border-color: black;
+    width: 100%;
+    border: 2px;
+    height: 70px;
+    background-color:  rgba(51, 97, 237, 0.79);
+    display: flex;
+    align-items: center;
+}
+.section-2 :hover {
+    border-color: black;
+    width: 100%;
+    height: 70px;
+    background-color: rgba(51, 97, 237, 0.79);
+    display: flex;
+    align-items: center;
+}
+.section-3 :hover {
+    border-color: black;
+    width: 100%;
+    height: 70px;
+    background-color:  rgba(51, 97, 237, 0.79);
+    display: flex;
+    align-items: center;
+    
+}
+.section-1, .section-2, .section-3 {
+    width: 100rem;
+   
+}
+
+.h2 {
+    background-color: rgba(59, 200, 225, 0.785);
+    border: 2px solid black;
+    height: 50px;
+    padding-left: 20px;
+}
+.common{
+    
+    padding: 20px;
+    border: 1px solid black ;
+    border-radius: 10px;
+
+}
+ span {
+    font-size: large;
+    
+ }
+
+ .main {
+    display: flex;
+ } */
+
+
+
+
+
+
+ /* Base styles */
+body {
+    margin-top: 83px;
+ }
+ 
+ /* Hover effects for sections */
+ .section-1 :hover {
+     border-color: black;
+     width: 100%;
+     border: 10px;
+     height: 70px;   
+     border-radius: 15px;
+     background-color: rgba(15, 38, 49, 0.79);
+     display: flex;
+     align-items: center;
+     color: white;
+     cursor: pointer; 
+ }
+ 
+ .section-2 :hover {
+     border-color: black;
+     width: 100%;
+     border: 10px;
+     height: 70px;
+     border-radius: 15px;
+     background-color: rgba(15, 38, 49, 0.79);
+     display: flex;
+     align-items: center;
+     color: white;
+     cursor: pointer;
+ }
+ 
+ .section-3 :hover {
+     border-color: black;
+     width: 100%;
+     height: 70px;
+     background-color: rgba(15, 38, 49, 0.79);
+     display: flex;
+     align-items: center;
+     border-radius: 15px;
+     border: 10px;
+     color: white;
+     cursor: pointer;
+ }
+ 
+ .section-1, .section-2, .section-3 {
+     width: 100%;
+     max-width: 100rem;
+ }
+ 
+ .h2 {
+     background-color: rgba(59, 200, 225, 0.785);
+     border: 2px solid black;
+     height: 50px;
+     padding-left: 20px;
+     display: flex;
+     align-items: center;
+ }
+ 
+ .common {
+     padding: 20px;
+     border: 1px solid black;
+     border-radius: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ span {
+     font-size: large;
+ }
+ 
+ .main {
+     display: flex;
+     max-width: 100%;
+     padding: 0 15px;
+ }
+ 
+ /* Video container styles */
+ .anchor {
+     flex: 2;
+     padding-right: 20px;
+ }
+ 
+ .basic {
+     flex: 1;
+ }
+ 
+ /* Make video responsive */
+ .anchor video {
+     width: 100%;
+     height: auto;
+     max-width: 900px;
+     max-height: 480px;
+     display: block;
+ }
+ 
+ /* Input checkbox styling */
+ .common input[type="checkbox"] {
+     margin-right: 10px;
+ }
+ 
+ /* Responsive styles */
+ @media only screen and (max-width: 1200px) {
+     .main {
+         padding: 0 10px;
+     }
+     
+     .section-1, .section-2, .section-3 {
+         width: 100%;
+     }
+     
+     .anchor video {
+         max-width: 100%;
+     }
+ }
+ 
+ @media only screen and (max-width: 992px) {
+     body {
+         margin-top: 70px;
+     }
+     
+     .main {
+         flex-direction: column;
+     }
+     
+     .anchor {
+         width: 100%;
+         padding-right: 0;
+         margin-bottom: 20px;
+     }
+     
+     .basic {
+         width: 100%;
+     }
+     
+     .anchor video {
+         width: 100%;
+         height: auto;
+     }
+     
+     .anchor h2 {
+         font-size: 1.5rem;
+         margin: 10px 0;
+     }
+ }
+ 
+ @media only screen and (max-width: 768px) {
+     body {
+         margin-top: 60px;
+     }
+     
+     .h2 {
+         height: auto;
+         min-height: 50px;
+         font-size: 1.2rem;
+         padding: 10px 15px;
+     }
+     
+     .common {
+         padding: 15px;
+     }
+     
+     .section-1 :hover, .section-2 :hover, .section-3 :hover {
+         height: auto;
+         min-height: 60px;
+         padding: 10px;
+     }
+     
+     span {
+         font-size: 16px;
+     }
+     
+     .anchor video {
+         height: auto;
+     }
+ }
+ 
+ @media only screen and (max-width: 576px) {
+     body {
+         margin-top: 50px;
+     }
+     
+     .main {
+         padding: 0 5px;
+     }
+     
+     .h2 {
+         font-size: 1rem;
+         padding: 10px;
+     }
+     
+     .common {
+         padding: 12px 10px;
+     }
+     
+     .section-1 :hover, .section-2 :hover, .section-3 :hover {
+         min-height: 50px;
+     }
+     
+     span {
+         font-size: 14px;
+     }
+     
+     .anchor h2 {
+         font-size: 1.2rem;
+     }
+ }
+ 
+ /* Fix for iOS video display */
+ @supports (-webkit-overflow-scrolling: touch) {
+     .anchor video {
+         width: 100% !important;
+         height: auto !important;
+     }
+ }

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #f39c12;
+            --dark-color: #34495e;
+            --light-color: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Nunito', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f8fa;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: var(--dark-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .testimonial {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-top: 15px;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            padding: 10px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e67e22;
+            border-color: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-item {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stats-text {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .upcoming-event {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .upcoming-event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-date {
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .event-details h5 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .badge-achievement {
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 0.9rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .achievement-category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .achievement-category.academic {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .achievement-category.art {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .achievement-category.professional {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .achievement-category.leadership {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        .achievement-category.advocacy {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        /* Fix for missing images */
+        img {
+            object-fit: cover;
+        }
+        
+        img.error {
+            content: url('/assets/imgs/placeholder.jpg');
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>EduSign Community</h1>
+            <p>Connect, learn, and grow together with our vibrant community of sign language learners, educators,
+                and advocates. Share experiences, celebrate achievements, and be part of a supportive network
+                dedicated to breaking communication barriers.</p>
+            <a href="#achievements" class="btn btn-light btn-lg">See Student Achievements</a>
+        </div>
+    </section>
+
+    <!-- Community Stats -->
+    <section class="container mb-5">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-item">
+                    <div class="stats-number">5,000+</div>
+                    <div class="stats-text">Community Members</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-item">
+                    <div class="stats-number">42</div>
+                    <div class="stats-text">Countries Represented</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-item">
+                    <div class="stats-number">350+</div>
+                    <div class="stats-text">Success Stories</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stats-item">
+                    <div class="stats-number">25+</div>
+                    <div class="stats-text">Sign Languages</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Achievements Section -->
+    <section id="achievements" class="container mb-5">
+        <h2 class="section-title">Student Achievements</h2>
+        <p class="mb-4">We celebrate the remarkable accomplishments of our deaf and hard of hearing students who inspire us with their dedication, talent, and perseverance. These success stories showcase the incredible potential when barriers to communication are removed.</p>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="achievement-card text-center">
+                    <img src="/assets/imgs/achievements/malik.jpg" alt="Malik Johnson" onerror="this.classList.add('error')">
+                    <h4>Malik Johnson</h4>
+                    <div class="badge-achievement">National Science Fair Winner</div>
+                    <div>
+                        <span class="achievement-category academic">Academic</span>
+                        <span class="achievement-category leadership">Leadership</span>
+                    </div>
+                    <p>Malik, who was born deaf, won first place at the National Science Fair with his innovative project on visual earthquake warning systems for the deaf community. He's now pursuing engineering at MIT.</p>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>May 2024</small>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="achievement-card text-center">
+                    <img src="/assets/imgs/achievements/sophia.jpg" alt="Sophia Chen" onerror="this.classList.add('error')">
+                    <h4>Sophia Chen</h4>
+                    <div class="badge-achievement">Youth Poet Laureate</div>
+                    <div>
+                        <span class="achievement-category art">Arts</span>
+                        <span class="achievement-category advocacy">Advocacy</span>
+                    </div>
+                    <p>Sophia, who is hard of hearing, became her city's Youth Poet Laureate. Her powerful sign language poetry performances have been viewed millions of times online, bringing deaf culture into the mainstream.</p>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>March 2024</small>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="achievement-card text-center">
+                    <img src="/assets/imgs/achievements/carlos.jpg" alt="Carlos Rodriguez" onerror="this.classList.add('error')">
+                    <h4>Carlos Rodriguez</h4>
+                    <div class="badge-achievement">Tech Startup Founder</div>
+                    <div>
+                        <span class="achievement-category professional">Professional</span>
+                        <span class="achievement-category leadership">Leadership</span>
+                    </div>
+                    <p>Carlos, who became deaf at age 5, founded a successful tech startup that develops accessibility apps. His company recently received $2M in funding to expand their innovative tools for the deaf community.</p>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>January 2024</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="achievement-card text-center">
+                    <img src="/assets/imgs/achievements/aisha.jpg" alt="Aisha Patel" onerror="this.classList.add('error')">
+                    <h4>Aisha Patel</h4>
+                    <div class="badge-achievement">Paralympic Swimming Medalist</div>
+                    <div>
+                        <span class="achievement-category leadership">Leadership</span>
+                    </div>
+                    <p>Aisha, who is deaf since birth, won three gold medals in swimming at the Deaflympics. She's now mentoring young deaf athletes and advocating for more inclusive sports programs in schools.</p>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>December 2023</small>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="achievement-card text-center">
+                    <img src="/assets/imgs/achievements/jackson.jpg" alt="Jackson Williams" onerror="this.classList.add('error')">
+                    <h4>Jackson Williams</h4>
+                    <div class="badge-achievement">Robotics Competition Champion</div>
+                    <div>
+                        <span class="achievement-category academic">Academic</span>
+                    </div>
+                    <p>Jackson, who is hard of hearing, led his team to victory in the National Robotics Competition. Their robot featured innovative visual cues specifically designed with deaf users in mind.</p>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>November 2023</small>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="achievement-card text-center">
+                    <img src="/assets/imgs/achievements/elena.jpg" alt="Elena Vasquez" onerror="this.classList.add('error')">
+                    <h4>Elena Vasquez</h4>
+                    <div class="badge-achievement">Sign Language Teacher of the Year</div>
+                    <div>
+                        <span class="achievement-category professional">Professional</span>
+                        <span class="achievement-category advocacy">Advocacy</span>
+                    </div>
+                    <p>Elena, who was born deaf, was recognized as Sign Language Teacher of the Year. Her innovative curriculum has been adopted by schools nationwide, helping thousands of students learn ASL.</p>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i>October 2023</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-secondary">View More Achievements</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="container mb-5">
+        <h2 class="section-title">Community Voices</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial text-center">
+                    <img src="/assets/imgs/testimonials/david.jpg" alt="David Chen" onerror="this.classList.add('error')">
+                    <p class="testimonial-text">"EduSign transformed my life. As a deaf student, I struggled in traditional classrooms. Here, I found resources tailored to my needs and a community that understands. Now I'm thriving in college and planning to become a sign language interpreter."</p>
+                    <p class="testimonial-author">David Chen</p>
+                    <p class="testimonial-role">College Student</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="testimonial text-center">
+                    <img src="/assets/imgs/testimonials/maria.jpg" alt="Maria Lopez" onerror="this.classList.add('error')">
+                    <p class="testimonial-text">"As a parent of a deaf child, I was overwhelmed until I found EduSign. The resources here helped our whole family learn sign language together. My daughter now has the confidence to express herself and is excelling in school."</p>
+                    <p class="testimonial-author">Maria Lopez</p>
+                    <p class="testimonial-role">Parent</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="testimonial text-center">
+                    <img src="/assets/imgs/testimonials/james.jpg" alt="James Wilson" onerror="this.classList.add('error')">
+                    <p class="testimonial-text">"Being born deaf in a hearing world was challenging. Through EduSign, I've connected with mentors who guided me through college and into my career. Now I work as a software engineer and mentor others in the community."</p>
+                    <p class="testimonial-author">James Wilson</p>
+                    <p class="testimonial-role">Software Engineer & Mentor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="container mb-5">
+        <h2 class="section-title">Upcoming Community Events</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="upcoming-event">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="event-date">Apr 15</div>
+                        </div>
+                        <div class="col-9 event-details">
+                            <h5>Virtual Sign Language Poetry Slam</h5>
+                            <p><i class="far fa-clock me-2"></i>7:00 PM - 9:00 PM EST</p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Online (Zoom)</p>
+                            <p>Join us for an evening of expressive sign poetry where participants can showcase their creativity and storytelling through sign language.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="upcoming-event">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="event-date">Apr 22</div>
+                        </div>
+                        <div class="col-9 event-details">
+                            <h5>Deaf Technology Summit</h5>
+                            <p><i class="far fa-clock me-2"></i>10:00 AM - 4:00 PM EST</p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Online & In-Person</p>
+                            <p>A gathering of deaf innovators, technologists, and entrepreneurs showcasing the latest accessibility technologies and discussing future innovations.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="upcoming-event">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="event-date">May 5</div>
+                        </div>
+                        <div class="col-9 event-details">
+                            <h5>Parents & Educators Workshop</h5>
+                            <p><i class="far fa-clock me-2"></i>1:00 PM - 3:00 PM EST</p>
+                            <p><i class="fas fa-map-marker-alt me-2"></i>Online (Zoom)</p>
+                            <p>Learn effective strategies for supporting deaf and hard of hearing children in educational settings and at home.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-secondary">View All Events</a>
+        </div>
+    </section>
+
+    <!-- Join Community Section -->
+    <section class="container mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="section-title">Join Our Community</h2>
+                <p>Become part of the EduSign community and connect with learners, educators, and advocates from
+                    around the world. Share your journey, access exclusive resources, and participate in community
+                    events.</p>
+                <ul class="mb-4">
+                    <li>Connect with native sign language users</li>
+                    <li>Participate in virtual practice sessions</li>
+                    <li>Access exclusive community resources</li>
+                    <li>Share your progress and celebrate milestones</li>
+                    <li>Join special interest groups based on your goals</li>
+                </ul>
+                <a href="/login" class="btn btn-primary me-3">Sign Up Now</a>
+                <a href="#" class="btn btn-outline-primary">Community Guidelines</a>
+            </div>
+            <div class="col-md-6">
+                <img src="/assets/imgs/community-join.jpg" alt="Join EduSign Community" class="img-fluid rounded" onerror="this.classList.add('error')">
+            </div>
+        </div>
+    </section>
+
+    <%- include('./partials/footer') %>
+    
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle active navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = 'community';
+            const navLink = document.getElementById('nav-translator');
+            if (navLink) {
+                navLink.classList.add('active');
+            }
+            
+            // Handle image errors
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.onerror = function() {
+                    this.classList.add('error');
+                }
+            });
+            
+            // Add animations on scroll
+            const animatedElements = document.querySelectorAll('.achievement-card, .testimonial, .stats-item, .upcoming-event');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
